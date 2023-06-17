@@ -40,6 +40,20 @@ public class Program {
 				if(capturedPiece != null) {
 					captured.add(capturedPiece);
 				}
+				
+				if (chessMatch.getPromoted() != null) {
+					// teste
+					boolean [][] promoPos = new boolean[8][8];
+					promoPos[chessMatch.getPromotedPosition().getRow()][chessMatch.getPromotedPosition().getColumn()] = true;
+					UI.clearScreen();
+					UI.printBoardPromo(chessMatch.getPieces(), promoPos);
+					System.out.println();
+					//-----------
+					
+					System.out.print("Enter piece for promotion (B/N/R/Q): ");
+					String type = sc.nextLine();
+					chessMatch.replacePromotedPiece(type);
+				}
 			}
 			catch (ChessException e) {
 				System.out.println(e.getMessage());
